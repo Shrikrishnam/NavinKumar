@@ -1,0 +1,90 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.navbar {
+    padding: .8rem;
+}
+.navbar-nav li {
+    padding-right: 30px;
+}
+.nav-link {
+    font-size: 1.1rem !important;
+}
+
+.navbar a:hover{
+    border-bottom:2px solid purple;
+}
+
+td, th {
+    text-align: center !important;
+}
+
+.table th{
+    color: purple;
+}
+.table .h1,.h2,.h3,.h4,.h5,.h6,.h7{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.form{
+    background-color: white;
+    box-shadow: 2px 2px 10px #333333;
+    border: 2px solid;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#h1{
+    color: purple;
+    font-size: 25px;
+    margin:5px;
+}
+
+.row{
+    padding: 10px;
+}
+
+fieldset{
+    background-color:  rgb(222, 220, 224);
+}
+.form-check-inline{
+    padding-left: 1.25rem;
+}
+
+#apply{
+    width:50%;
+    height: 50px;
+    margin-top: 5rem;
+    margin-left: 15rem!important;
+    background: purple;
+    color:white;
+}
+
+.btn-success, .btn-primary{
+    background: purple!important;
+    color:white!important;
+    border-color: purple;
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+
+
+

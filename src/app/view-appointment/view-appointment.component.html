@@ -1,0 +1,107 @@
+<div class="table-responsive-sm table-responsive-md table-responsive-lg">
+  <table class="table table-striped table-hover table-bordered">
+    <thead>
+      <tr>
+        <th class="h1">Sl NO</th>
+        <th class="h2">Name</th>
+        <th class="h3">Address</th>
+        <th class="h4">City</th>
+        <th class="h5">Package</th>
+        <th class="h6">Trainer Preference</th>
+        <th class="h7">Phone</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody *ngIf="users?.length > 0">
+      <tr *ngFor="let user of users; index as i">
+        <td>{{ i+1 }}</td>
+        <td>{{ user.firstname }} {{ user.lastname }}</td>
+        <td>{{ user.streetaddress }}</td>
+        <td>{{ user.city }}</td>
+        <td>{{ user.packages }}</td>
+        <td>{{ user.trainerpreference }}</td>
+        <td>{{ user.phonenumber }}</td>
+        <td>
+          <button class="btn btn-primary" (click)="openModal(viewAppointmentModal, user)" >
+           View
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h1 class="text-center" *ngIf="users === undefined">No Appointments available right now</h1>
+</div>
+
+<!-- Modal for viewing particular appointment details -->
+<ng-template #viewAppointmentModal let-modal>
+    <div class="modal-header">
+    <h5 class="modal-title" id="deleteLabel">Appointment Details</h5>
+    <button type="button" class="close" (click)="modal.dismiss()" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+ 
+    <div class="modal-body">
+      <div class="row">
+        <div class="table-responsive">
+          <table class="table table-striped table-hover" *ngIf="modalUser">
+            <tr>
+              <th>Name</th>
+              <td>{{ modalUser.firstname }} {{ modalUser.lastname }}</td>
+            </tr>
+            <tr>
+              <th>Age</th>
+              <td>{{ modalUser.age }}</td>
+            </tr>
+            <tr>
+              <th>Email</th>
+              <td>{{ modalUser.email }}</td>
+            </tr>
+            <tr>
+              <th>Phone</th>
+              <td>{{ modalUser.phonenumber }}</td>
+            </tr>
+            <tr>
+              <th>Address</th>
+              <td>{{ modalUser.streetaddress}} {{modalUser.pincode}}</td>
+            </tr>
+            <tr>
+              <th>City</th>
+              <td>{{ modalUser.city }}</td>
+            </tr>
+            <tr>
+              <th>State</th>
+              <td>{{ modalUser.state }}</td>
+            </tr>
+            <tr>
+              <th>Country</th>
+              <td>{{ modalUser.country }}</td>
+            </tr>
+            <tr>
+              <th>Trainer Preference</th>
+              <td>{{ modalUser.trainerpreference }}</td>
+            </tr>
+            <tr>
+              <th>Physiotherapist</th>
+              <td>{{ modalUser.physiotherapist }}</td>
+            </tr>
+            <tr>
+              <th>Package</th>
+              <td>{{ modalUser.packages }}</td>
+            </tr>
+            <tr>
+              <th>Cost</th>
+              <td>{{ modalUser.inr }}.{{ modalUser.paisa }} INR</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Close</button>
+      <button type="submit" class="btn btn-danger" (click)="deleteAppointment(modalUser.id)">Delete</button>
+      <button class="btn btn-success" (click)="editAppointment(modalUser.id)">
+        Edit
+       </button>
+  </div>
+    </div>
+</ng-template>

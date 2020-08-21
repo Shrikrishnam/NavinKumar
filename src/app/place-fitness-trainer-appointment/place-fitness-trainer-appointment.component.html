@@ -1,0 +1,503 @@
+<div class="container" *ngIf="loaded">
+    <div class="form">
+        <h1 id="h1" class="text-center">{{formHeading}} Fitness Trainer Appointment</h1>
+        <form [formGroup]="fitnessForm" (ngSubmit)="onSubmit()" novalidate>
+            
+            <fieldset class="form-group border border-dark rounded">
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- First Name -->
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                formControlName="firstname"
+                                placeholder="First Name"
+                                appAutofocus
+                                [class.is-invalid]="fitnessForm.controls.firstname.touched &&
+                                fitnessForm.controls.firstname.invalid"
+                            />
+                            <div *ngIf="
+                                fitnessForm.controls.firstname.touched &&
+                                fitnessForm.controls.firstname.invalid"
+                            >
+                                <small
+                                    class="form-text text-danger"
+                                    *ngIf="fitnessForm.controls.firstname.errors?.required"
+                                >
+                                    First name required
+                                </small>
+                                 <small
+                                    class="form-text text-danger"
+                                    *ngIf="fitnessForm.controls.firstname.errors?.pattern"
+                                >
+                                    First name cannot contain numbers
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <!-- Last Name -->
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                formControlName="lastname"
+                                placeholder="Last Name"
+                                [class.is-invalid]="fitnessForm.controls.lastname.touched &&
+                                fitnessForm.controls.lastname.invalid"
+                            />
+                            <div *ngIf="
+                                fitnessForm.controls.lastname.touched &&
+                                fitnessForm.controls.lastname.invalid"
+                            >
+                                <small
+                                    class="form-text text-danger"
+                                    *ngIf="fitnessForm.controls.lastname.errors?.required"
+                                >
+                                    Last name required
+                                </small>
+                                 <small
+                                    class="form-text text-danger"
+                                    *ngIf="fitnessForm.controls.lastname.errors?.pattern"
+                                >
+                                    Last name cannot contain numbers
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- Age -->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Age</label>
+                            <input
+                            type="number"
+                            class="form-control"
+                            formControlName="age"
+                            placeholder="Age"
+                            [class.is-invalid]="fitnessForm.controls.age.touched &&
+                                fitnessForm.controls.age.invalid"
+                            />
+                            <div *ngIf="
+                                fitnessForm.controls.age.touched &&
+                                fitnessForm.controls.age.invalid"
+                            >
+                                <small
+                                    class="form-text text-danger"
+                                    *ngIf="fitnessForm.controls.age.errors?.required"
+                                >
+                                    Age required
+                                </small>
+                                 <small
+                                    class="form-text text-danger"
+                                    *ngIf="fitnessForm.controls.age.errors?.min || fitnessForm.controls.age.errors?.max "
+                                >
+                                    Age should be between 18-60
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                    <!-- Phone Number -->
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input
+                            type="tel"
+                            class="form-control"
+                            formControlName="phonenumber"
+                            placeholder="Phone Number"
+                            [class.is-invalid]="fitnessForm.controls.phonenumber.touched &&
+                                fitnessForm.controls.phonenumber.invalid"
+                            />
+                            <div *ngIf="
+                                fitnessForm.controls.phonenumber.touched &&
+                                fitnessForm.controls.phonenumber.invalid"
+                            >
+                                <small
+                                    class="form-text text-danger"
+                                    *ngIf="fitnessForm.controls.phonenumber.errors?.required"
+                                >
+                                    Phone number required
+                                </small>
+                                 <small
+                                    class="form-text text-danger"
+                                    *ngIf="fitnessForm.controls.phonenumber.errors?.pattern"
+                                >
+                                    Enter proper phone number
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                <!-- Email -->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input
+                            type="email"
+                            class="form-control"
+                            formControlName="email"
+                            placeholder="Email"
+                            [class.is-invalid]="fitnessForm.controls.email.touched &&
+                                fitnessForm.controls.email.invalid"
+                            />
+                            <div *ngIf="
+                                fitnessForm.controls.email.touched &&
+                                fitnessForm.controls.email.invalid"
+                            >
+                                <small
+                                    class="form-text text-danger"
+                                    *ngIf="fitnessForm.controls.email.errors?.required"
+                                >
+                                    Email required
+                                </small>
+                                 <small
+                                    class="form-text text-danger"
+                                    *ngIf="fitnessForm.controls.email.errors?.pattern"
+                                >
+                                    Enter proper email
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="form-group border border-dark rounded">
+                <!-- Street Address -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Street Address</label>
+                            <input
+                            type="text"
+                            class="form-control"
+                            formControlName="streetaddress"
+                            placeholder="Street Address"
+                            [class.is-invalid]="fitnessForm.controls.streetaddress.touched &&
+                                            fitnessForm.controls.streetaddress.invalid"
+                            />
+                            <div *ngIf="
+                                        fitnessForm.controls.streetaddress.touched &&
+                                        fitnessForm.controls.streetaddress.invalid"
+                                            >
+                                            <small
+                                                class="form-text text-danger"
+                                                *ngIf="fitnessForm.controls.streetaddress.errors?.required"
+                                            >
+                                                Street address required
+                                            </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <!-- Pincode -->
+                        <div class="form-group">
+                            <label>Pincode</label>
+                            <input
+                                type="number"
+                                class="form-control"
+                                formControlName="pincode"
+                                placeholder="Pincode"
+                                [class.is-invalid]="fitnessForm.controls.pincode.touched &&
+                                            fitnessForm.controls.pincode.invalid"
+                            />
+                            <div *ngIf="
+                                            fitnessForm.controls.pincode.touched &&
+                                            fitnessForm.controls.pincode.invalid"
+                                        >
+                                            <small
+                                                class="form-text text-danger"
+                                                *ngIf="fitnessForm.controls.pincode.errors?.required"
+                                            >
+                                                Pincode required
+                                            </small>
+                                            <small
+                                                class="form-text text-danger"
+                                                *ngIf="fitnessForm.controls.pincode.errors?.pattern"
+                                            >
+                                                Enter proper pincode
+                                            </small>
+                                        </div>
+                            </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- City -->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>City</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                formControlName="city"
+                                placeholder="City"
+                                [class.is-invalid]="fitnessForm.controls.city.touched &&
+                                            fitnessForm.controls.city.invalid"
+                            />
+                            <div *ngIf="
+                                            fitnessForm.controls.city.touched &&
+                                            fitnessForm.controls.city.invalid"
+                                        >
+                                            <small
+                                                class="form-text text-danger"
+                                                *ngIf="fitnessForm.controls.city.errors?.required"
+                                            >
+                                                City required
+                                            </small>
+                                            <small
+                                                class="form-text text-danger"
+                                                *ngIf="fitnessForm.controls.city.errors?.pattern"
+                                            >
+                                                Enter proper city
+                                            </small>
+                             </div>
+                        </div>
+                    </div>
+
+                    <!-- State -->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>State</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                formControlName="state"
+                                placeholder="State"
+                                [class.is-invalid]="fitnessForm.controls.state.touched &&
+                                            fitnessForm.controls.state.invalid"
+                            />
+                            <div *ngIf="
+                                            fitnessForm.controls.state.touched &&
+                                            fitnessForm.controls.state.invalid"
+                                        >
+                                            <small
+                                                class="form-text text-danger"
+                                                *ngIf="fitnessForm.controls.state.errors?.required"
+                                            >
+                                                State required
+                                            </small>
+                                            <small
+                                                class="form-text text-danger"
+                                                *ngIf="fitnessForm.controls.state.errors?.pattern"
+                                            >
+                                                Enter proper state
+                                            </small>
+                                </div>
+                        </div>
+                    </div>
+
+                    <!-- Country -->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Country</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                formControlName="country"
+                                placeholder="Country"
+                                [class.is-invalid]="fitnessForm.controls.country.touched &&
+                                            fitnessForm.controls.country.invalid"
+                            />
+                            <div *ngIf="
+                                            fitnessForm.controls.country.touched &&
+                                            fitnessForm.controls.country.invalid"
+                                        >
+                                            <small
+                                                class="form-text text-danger"
+                                                *ngIf="fitnessForm.controls.country.errors?.required"
+                                            >
+                                                Country required
+                                            </small>
+                                            <small
+                                                class="form-text text-danger"
+                                                *ngIf="fitnessForm.controls.country.errors?.pattern"
+                                            >
+                                                Enter proper country
+                                            </small>
+                                        </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="form-group border border-dark rounded">
+                <div class="row">
+                    <div class="col-md-6">
+                            <div class="row">
+                                <!-- Trainer Preference -->
+                                <div class="col-md-4 pl-1">
+                                    <label class="col-form-label pt-0">Trainer Preference:</label>
+                                </div>
+                                <div class="col-md-8 ml-0 pl-0">
+                                    <div class="form-check form-check-inline">
+                                <input
+                                        class="form-check-input"
+                                        type="radio"
+                                        formControlName="trainerpreference"
+                                        value="male"
+                                        />
+                                        <label class="form-check-label">Male</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                <input
+                                        class="form-check-input"
+                                        type="radio"
+                                        formControlName="trainerpreference"
+                                        value="female"
+                                        />
+                                        <label class="form-check-label">Female</label>
+                                </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="col-md-6">
+                            <div class="row">
+                                <!-- Physiotherapist  -->
+                                <div class="col-md-4 pl-1">
+                                    <label class="col-form-label pt-0">Physiotherapist:</label>
+                                </div>
+                                <div class="col-md-8 ml-0 pl-0">
+                                    <div class="form-check form-check-inline">
+                                <input
+                                        class="form-check-input"
+                                        type="radio"
+                                        formControlName="physiotherapist"
+                                        value="yes"
+                                        />
+                                        <label class="form-check-label">Yes</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                <input
+                                        class="form-check-input"
+                                        type="radio"
+                                        formControlName="physiotherapist"
+                                        value="no"
+                                        />
+                                        <label class="form-check-label">No</label>
+                                </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- Packages -->
+                        <div class="form-group">
+                            <label>Packages</label>
+                        <select 
+                            class="form-control"
+                            formControlName="packages"
+                            required
+                            [class.is-invalid]="fitnessForm.controls.packages.touched && fitnessForm.errors?.notSelected"
+                        >
+                            <option value="any">Interested in</option>
+                            <option *ngFor="let package of packages" [ngValue]="package.name">{{package.name}}</option>
+                        </select>
+                        <small
+                            class="form-text text-danger"
+                            *ngIf="fitnessForm.errors?.notSelected && fitnessForm.controls.packages.touched"
+                        >
+                            Please select Packages
+                        </small>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <!-- inr -->
+                        <div class="form-group">
+                        <label>Inr</label>
+                        <input
+                                type="number"
+                                class="form-control"
+                                formControlName="inr"
+                                placeholder="Inr"
+                                readonly
+                                [class.is-invalid]="(fitnessForm.controls.inr.touched &&
+                                            fitnessForm.controls.inr.invalid) &&
+                                            fitnessForm.errors?.misMatch"
+                            />
+                        <div *ngIf="
+                                (fitnessForm.controls.inr.touched &&
+                                fitnessForm.controls.inr.invalid) ||
+                                fitnessForm.errors?.misMatch"
+                            >
+                                <small
+                                    class="form-text text-danger"
+                                    *ngIf="fitnessForm.controls.inr.touched && fitnessForm.controls.inr.errors?.required"
+                                >
+                                    Inr required
+                                </small>
+                                <small
+                                    class="form-text text-danger"
+                                    *ngIf="fitnessForm.controls.inr.touched && fitnessForm.controls.inr.errors?.pattern"
+                                >
+                                    Enter proper Inr
+                                </small>
+                                <small
+                                    class="form-text text-danger"
+                                    *ngIf="fitnessForm.controls.inr.touched && fitnessForm.errors?.misMatch"
+                                >
+                                    Please select proper package
+                                </small>
+                            </div>
+                        
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <!-- paisa -->
+                        <div class="form-group">
+                        <label>Paisa</label>
+                        <input
+                            type="number"
+                            class="form-control"
+                            formControlName="paisa"
+                            placeholder="Paisa"
+                            required
+                            readonly
+                            [class.is-invalid]="(fitnessForm.controls.paisa.touched &&
+                                            fitnessForm.controls.paisa.invalid) &&
+                                            fitnessForm.errors?.misMatch"
+                         />
+                         <div *ngIf="
+                                (fitnessForm.controls.paisa.touched &&
+                                fitnessForm.controls.paisa.invalid) ||
+                                fitnessForm.errors?.misMatch"
+                            >
+                                <small
+                                    class="form-text text-danger"
+                                    *ngIf="fitnessForm.controls.paisa.touched && fitnessForm.controls.paisa.errors?.required"
+                                >
+                                    Paisa required
+                                </small>
+                                <small
+                                    class="form-text text-danger"
+                                    *ngIf="fitnessForm.controls.paisa.touched && fitnessForm.controls.paisa.errors?.pattern"
+                                >
+                                    Enter proper paisa
+                                </small>
+                                <small
+                                    class="form-text text-danger"
+                                    *ngIf="fitnessForm.controls.paisa.touched && fitnessForm.errors?.misMatch"
+                                >
+                                    Please select proper package
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="row">
+            <div class="col-12">
+                <button [disabled]="!fitnessForm.valid" class="btn btn-block btn-success" type="submit">
+                {{submitValue}}
+                </button>
+            </div>
+            </div>
+        </form>
+    </div>
+</div>
